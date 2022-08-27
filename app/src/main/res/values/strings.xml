@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">GameAssets1</string>
+    <string name="image_armor_type">Image representing armor type</string>
+    <string name="armor_name">Item Name</string>
+    <string name="rank_text">low</string>
+    <string name="base_defense_text">31</string>
+    <string name="slots_text">Slots</string>
 </resources>
