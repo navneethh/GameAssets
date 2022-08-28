@@ -5,31 +5,24 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.navneet.gameassets1.models.Armor
+import com.navneet.gameassets1.repository.ArmorRepository
 
 class MainActivityViewModel : ViewModel(){
     private var armorList : MutableLiveData<List<Armor>> = MutableLiveData()
-    private var  armorArray: ArrayList<Armor> = ArrayList()
 
     fun init() {
         if(armorList.value!= null){
             Log.e("from mainactivityViewModel", "Data reloading stopped")
             return
         }
-        loadArmorList()
-        armorList.value= armorArray
-    }
-
-    private fun loadArmorList() {
-        armorArray.add( Armor("Navneet","low", "34","better"))
-        armorArray.add( Armor("Second","High", "11","jetter"))
-        armorArray.add( Armor("Third","Not", "34","setter"))
-        armorArray.add( Armor("Fourth","up", "45","getter"))
-        armorArray.add( Armor("Fifth","low", "64","butter"))
+        val armorRepository  = ArmorRepository()
+        val mRepo = armorRepository.getInstance()
+        armorList = mRepo.getArmorList()
 
     }
 
+//    returns armorList to mainactivity as RecycerView Dataset
     fun getArmorList(): LiveData<List<Armor>> {
-
         return armorList
     }
 
