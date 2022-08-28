@@ -1,10 +1,10 @@
 package com.navneet.gameassets1.repository
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
-import com.google.gson.JsonArray
-import com.google.gson.JsonObject
 import com.navneet.gameassets1.JsonApi
+import com.navneet.gameassets1.MainActivity
 import com.navneet.gameassets1.models.Armor
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,32 +33,31 @@ public class ArmorRepository {
         return data
     }
 
+//    downloading data using retrofit Api
     private fun loadArmor() {
         val retrofit = Retrofit.Builder().baseUrl(url)
             .addConverterFactory(GsonConverterFactory.create()).build()
         val jsonApi : JsonApi = retrofit.create(JsonApi::class.java)
-        val armorRemote: Call<JsonArray> = jsonApi.getArmor()
-        armorRemote.enqueue( object : Callback<JsonArray> {
-             override fun onResponse(call: Call<JsonArray>, response: Response<JsonArray>) {
-                 if(response.isSuccessful) {
-                     val output = response.body()!!.toString()
-                     Log.e("from repository", output)
-                 } else {
-                     Log.e("Unsuccessful","response" + response.code())
-                 }
-             }
+        val armorRemote: Call<List<Armor>> = jsonApi.getArmor()
+        armorRemote.enqueue( object : Callback<List<Armor>> {
 
-            override fun onFailure(call: Call<JsonArray>, t: Throwable) {
+            override fun onResponse(call: Call<List<Armor>>, response: Response<List<Armor>>) {
+                if(response.isSuccessful) {
+//                    value intialization after receiving form Url
+                    data.postValue(response.body())
+                    Log.e("Value of Data", data.value.toString())
+
+
+                } else {
+                    Log.e("Unsuccessful","response" + response.code())
+                }
+            }
+
+            override fun onFailure(call: Call<List<Armor>>, t: Throwable) {
                 Log.e("Error", t.message!!)
-
             }
 
         })
-//        armorArray.add( Armor("Navneet","low", "34","head"))
-//        armorArray.add( Armor("Second","High", "11","waist"))
-//        armorArray.add( Armor("Third","Not", "34","legs"))
-//        armorArray.add( Armor("Fourth","up", "45","gloves"))
-//        armorArray.add( Armor("Fifth","low", "64","chest"))
     }
 
 

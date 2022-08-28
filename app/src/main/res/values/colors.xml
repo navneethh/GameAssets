@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="layout_container_backgroud">#FFFFFF</color>
     <color name="text_color">#313131</color>
+    <color name="main_layout_background">#F8E9B9</color>
 </resources>

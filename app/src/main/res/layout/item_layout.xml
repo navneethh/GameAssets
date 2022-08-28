@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#F8E9B9">
+    >
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -65,7 +65,7 @@
                     android:id="@+id/base_defense"
                     style="@style/text_style_listItems"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:drawablePadding="5dp"
                     android:text="@string/base_defense_text"

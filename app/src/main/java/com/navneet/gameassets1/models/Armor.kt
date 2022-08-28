@@ -1,3 +1,5 @@
 package com.navneet.gameassets1.models
 
-class Armor(val name: String, val rank: String, val BaseDefense: String, val type: String )
+import com.google.gson.annotations.SerializedName
+
+data class Armor(val name: String, val rank: String, @SerializedName("id") val BaseDefense: String, val type: String )

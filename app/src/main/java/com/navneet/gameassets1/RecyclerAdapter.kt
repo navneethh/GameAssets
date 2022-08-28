@@ -7,8 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.navneet.gameassets1.models.Armor
+import java.util.*
+import kotlin.collections.ArrayList
 
-class RecyclerAdapter(private val armourList:List<Armor>) : RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>() {
+class RecyclerAdapter(private var armourList:ArrayList<Armor>) : RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView =
@@ -23,6 +25,13 @@ class RecyclerAdapter(private val armourList:List<Armor>) : RecyclerView.Adapter
         setTypeImage(armourList[position].type, holder.type)
     }
 
+
+
+    override fun getItemCount(): Int {
+        return armourList.size
+    }
+
+    //    a Switch case function to set icons of armor TYPE to ImageView
     private fun setTypeImage(type: String, type1: ImageView ) {
         when(type){
             "chest" -> type1.setImageResource(R.drawable.ic_chest)
@@ -30,17 +39,28 @@ class RecyclerAdapter(private val armourList:List<Armor>) : RecyclerView.Adapter
             "head" -> type1.setImageResource(R.drawable.ic_head)
             "legs" -> type1.setImageResource(R.drawable.ic_legs)
             "waist" -> type1.setImageResource(R.drawable.ic_waist)
+        }
+    }
+    // for refreshing ArmorList from mainActivity
+    fun refreshRecycler( newList : ArrayList<Armor>) {
+        armourList = newList
+        notifyDataSetChanged()
+    }
 
-
+//    for flitering of ArmorList by string provided by user
+    fun filerRecyler( input : String){
+        var newlist: ArrayList<Armor> = ArrayList()
+        for( arrayList in armourList){
+            if(arrayList.name.lowercase().contains(input.lowercase())){
+                newlist.add(arrayList)
+            }
+            armourList = newlist
+            notifyDataSetChanged()
         }
 
+
+
     }
-
-    override fun getItemCount(): Int {
-        return armourList.size
-    }
-
-
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.findViewById(R.id.armor_name)
