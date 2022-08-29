@@ -54,6 +54,7 @@ public class ArmorRepository {
             }
 
             override fun onFailure(call: Call<List<Armor>>, t: Throwable) {
+
                 Log.e("Error", t.message!!)
             }
 

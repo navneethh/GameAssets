@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -41,10 +40,10 @@
 
             <TextView
                 android:id="@+id/armor_name"
+                style="@style/text_style_listItems"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/armor_name"
-                style="@style/text_style_listItems"
                 android:textSize="20sp" />
 
             <LinearLayout
@@ -55,10 +54,10 @@
 
                 <TextView
                     android:id="@+id/rank"
+                    style="@style/text_style_listItems"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    style="@style/text_style_listItems"
                     android:text="@string/rank_text" />
 
                 <TextView
@@ -71,13 +70,47 @@
                     android:text="@string/base_defense_text"
                     app:drawableLeftCompat="@drawable/ic_shield" />
 
-                <TextView
-                    android:id="@+id/slots"
-                    style="@style/text_style_listItems"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/slots_text" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0">
+
+                    <TextView
+                        android:id="@+id/slot1"
+                        style="@style/text_style_listItems"
+                        android:layout_width="27dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:background="@drawable/ic_deco"
+                        android:gravity="center"
+                        android:text="@string/slots_place_holder" />
+
+                    <TextView
+                        android:id="@+id/slot2"
+                        style="@style/text_style_listItems"
+                        android:layout_width="27dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp"
+
+                        android:layout_marginRight="3dp"
+                        android:background="@drawable/ic_deco"
+                        android:gravity="center"
+                        android:text="@string/slots_place_holder" />
+
+                    <TextView
+                        android:id="@+id/slot3"
+                        style="@style/text_style_listItems"
+                        android:layout_width="27dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:background="@drawable/ic_deco"
+                        android:gravity="center"
+                        android:text="@string/slots_place_holder"
+                        android:visibility="visible" />
+
+                </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>
